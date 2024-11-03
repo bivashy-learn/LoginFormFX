@@ -1,0 +1,74 @@
+@import '../fonts/Fonts.css';
+@import 'colors.css';
+
+/**************************************************
+ * Root
+**************************************************/
+.rootPane {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-color: #ebebeb;
+    -fx-border-radius: 10;
+}
+
+/**************************************************
+ * Window Header
+**************************************************/
+.rootPane .close-icon {
+    -mfx-color: -mfx-red;
+    -fx-opacity: 0.5;
+}
+
+.rootPane .close-icon:hover {
+    -fx-opacity: 1.0;
+}
+
+.rootPane .minimize-icon {
+    -mfx-color: #ffbf37;
+    -fx-opacity: 0.5;
+}
+
+.rootPane .minimize-icon:hover {
+    -fx-opacity: 1.0;
+}
+
+.rootPane .always-on-top-icon {
+    -mfx-color: -mfx-purple;
+    -fx-opacity: 0.5;
+}
+
+.rootPane .always-on-top-icon:hover {
+    -fx-opacity: 1.0;
+}
+
+.rootPane .always-on-top-icon:always-on-top {
+    -fx-opacity: 1.0;
+}
+
+.outline-button {
+    -fx-background-color: transparent;
+    -fx-border-color: -mfx-purple;
+    -fx-border-radius: 3;
+
+    -fx-text-fill: -mfx-purple;
+}
+
+.outline-button:hover,
+.outline-button:focused {
+    -fx-background-color: -mfx-purple;
+    -fx-text-fill: white;
+}
+
+.link-button {
+    -fx-background-color: transparent;
+    -fx-border-radius: 3;
+    -fx-text-fill: #0096FF;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.link-button:armed,
+.link-button:focused {
+    -fx-border-color: #006BFF;
+    -fx-text-fill: #006BFF;
+}
