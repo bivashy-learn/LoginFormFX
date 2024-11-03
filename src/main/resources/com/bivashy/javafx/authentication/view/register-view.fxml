@@ -1,10 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import io.github.palexdev.mfxresources.fonts.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bivashy.javafx.authentication.controller.RegisterController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="rootPane" prefHeight="512.0" prefWidth="384.0" styleClass="rootPane" stylesheets="@../css/register-view.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bivashy.javafx.authentication.controller.RegisterController">
+    <HBox fx:id="windowHeader" alignment="CENTER_RIGHT" layoutY="6.0" prefHeight="50.0" prefWidth="1281.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <padding>
+            <Insets right="10.0"/>
+        </padding>
+        <MFXIconWrapper fx:id="returnIcon" onMouseClicked="#onReturn" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="1.0" prefWidth="7.0">
+            <HBox.margin>
+                <Insets top="4.0"/>
+            </HBox.margin>
+        </MFXIconWrapper>
+        <Label fx:id="registerLabel" alignment="CENTER" prefHeight="48.0" prefWidth="240.0" styleClass="register-label" text="Register">
+        </Label>
+        <MFXFontIcon fx:id="minimizeIcon" description="fas-circle" size="15.0" styleClass="minimize-icon"/>
+        <MFXFontIcon fx:id="alwaysOnTopIcon" description="fas-circle" size="15.0" styleClass="always-on-top-icon"/>
+        <MFXFontIcon fx:id="closeIcon" description="fas-circle" size="15.0" styleClass="close-icon"/>
+    </HBox>
+    <VBox layoutX="129.0" layoutY="81.0" spacing="16.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0" AnchorPane.topAnchor="32.0">
+        <children>
+            <AnchorPane minHeight="96.0">
+                <children>
+                    <VBox prefWidth="254.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <children>
+                            <MFXTextField floatMode="BORDER" floatingText="Login" prefWidth="468.0">
+                                <opaqueInsets>
+                                    <Insets/>
+                                </opaqueInsets>
+                                <cursor>
+                                    <Cursor fx:constant="DEFAULT"/>
+                                </cursor>
+                            </MFXTextField>
+                            <MFXPasswordField floatMode="BORDER" floatingText="Password" layoutX="10.0" layoutY="10.0" prefWidth="468.0">
+                                <VBox.margin>
+                                    <Insets top="8.0"/>
+                                </VBox.margin>
+                            </MFXPasswordField>
+                            <MFXPasswordField floatMode="BORDER" floatingText="Repeat password" layoutX="10.0" layoutY="10.0" prefWidth="468.0">
+                                <VBox.margin>
+                                    <Insets top="8.0"/>
+                                </VBox.margin>
+                            </MFXPasswordField>
+                            <MFXButton prefHeight="48.0" prefWidth="259.0" styleClass="outline-button" text="Login">
+                                <VBox.margin>
+                                    <Insets top="8.0"/>
+                                </VBox.margin>
+                            </MFXButton>
+                        </children>
+                    </VBox>
+                </children>
+                <VBox.margin>
+                    <Insets top="64.0"/>
+                </VBox.margin>
+            </AnchorPane>
+        </children>
+    </VBox>
 </AnchorPane>
