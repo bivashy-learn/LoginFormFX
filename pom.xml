@@ -22,6 +22,8 @@
         <vfx.version>11.9.6</vfx.version>
         <cssfx.version>11.5.1</cssfx.version>
         <ikonli.version>12.3.1</ikonli.version>
+        <fontawesomefx.common>9.1.2</fontawesomefx.common>
+        <fontawesomefx.material-icons>2.2.0-9.1.2</fontawesomefx.material-icons>
 
         <!-- Test Dependency versions -->
         <junit.version>5.9.1</junit.version>
@@ -53,6 +55,18 @@
             <groupId>io.github.palexdev</groupId>
             <artifactId>materialfx</artifactId>
             <version>${materialfx.version}</version>
+        </dependency>
+
+        <!-- FontAwesomeFX -->
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx-commons</artifactId>
+            <version>${fontawesomefx.common}</version>
+        </dependency>
+        <dependency>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx-materialicons</artifactId>
+            <version>${fontawesomefx.material-icons}</version>
         </dependency>
 
         <!-- Scenic View -->
