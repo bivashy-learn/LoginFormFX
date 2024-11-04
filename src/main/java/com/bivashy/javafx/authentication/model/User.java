@@ -24,5 +24,14 @@ public class User {
         return hashedPassword;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", hashedPassword='" + hashedPassword + '\'' +
+                '}';
+    }
+
 }
 

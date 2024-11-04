@@ -30,7 +30,7 @@
                 <children>
                     <VBox prefWidth="254.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                         <children>
-                            <MFXTextField floatMode="BORDER" floatingText="Login" prefWidth="468.0">
+                            <MFXTextField fx:id="loginInput" floatMode="BORDER" floatingText="Login" prefWidth="468.0">
                                 <opaqueInsets>
                                     <Insets/>
                                 </opaqueInsets>
@@ -38,17 +38,17 @@
                                     <Cursor fx:constant="DEFAULT"/>
                                 </cursor>
                             </MFXTextField>
-                            <MFXPasswordField floatMode="BORDER" floatingText="Password" layoutX="10.0" layoutY="10.0" prefWidth="468.0">
+                            <MFXPasswordField fx:id="passwordInput" floatMode="BORDER" floatingText="Password" layoutX="10.0" layoutY="10.0" prefWidth="468.0">
                                 <VBox.margin>
                                     <Insets top="8.0"/>
                                 </VBox.margin>
                             </MFXPasswordField>
-                            <MFXPasswordField floatMode="BORDER" floatingText="Repeat password" layoutX="10.0" layoutY="10.0" prefWidth="468.0">
+                            <MFXPasswordField fx:id="passwordRepeatInput" floatMode="BORDER" floatingText="Repeat password" layoutX="10.0" layoutY="10.0" prefWidth="468.0">
                                 <VBox.margin>
                                     <Insets top="8.0"/>
                                 </VBox.margin>
                             </MFXPasswordField>
-                            <MFXButton prefHeight="48.0" prefWidth="259.0" styleClass="outline-button" text="Login">
+                            <MFXButton onAction="#register" prefHeight="48.0" prefWidth="259.0" styleClass="outline-button" text="Login">
                                 <VBox.margin>
                                     <Insets top="8.0"/>
                                 </VBox.margin>

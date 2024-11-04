@@ -1,14 +1,11 @@
 package com.bivashy.javafx.authentication;
 
-import com.bivashy.javafx.authentication.controller.MainController;
 import fr.brouillard.oss.cssfx.CSSFX;
 import io.github.palexdev.materialfx.theming.JavaFXThemes;
 import io.github.palexdev.materialfx.theming.MaterialFXStylesheets;
 import io.github.palexdev.materialfx.theming.UserAgentBuilder;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class MainApplication extends Application {
 

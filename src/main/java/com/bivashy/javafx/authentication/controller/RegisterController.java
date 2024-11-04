@@ -1,15 +1,25 @@
 package com.bivashy.javafx.authentication.controller;
 
 import com.bivashy.javafx.authentication.StageWrapper;
+import com.bivashy.javafx.authentication.database.MemoryUserDatabase;
 import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXIconWrapper;
+import io.github.palexdev.materialfx.controls.MFXTextField;
+import io.github.palexdev.materialfx.dialogs.MFXGenericDialog;
+import io.github.palexdev.materialfx.dialogs.MFXGenericDialogBuilder;
+import io.github.palexdev.materialfx.dialogs.MFXStageDialog;
+import io.github.palexdev.materialfx.enums.ScrimPriority;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class RegisterController extends BasicController {
@@ -18,6 +28,12 @@ public class RegisterController extends BasicController {
     private Label registerLabel;
     @FXML
     private MFXIconWrapper returnIcon;
+    @FXML
+    private MFXTextField loginInput;
+    @FXML
+    private MFXTextField passwordInput;
+    @FXML
+    private MFXTextField passwordRepeatInput;
 
     public RegisterController(StageWrapper stageWrapper) {
         super(stageWrapper);
@@ -26,6 +42,7 @@ public class RegisterController extends BasicController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         super.initialize(url, resourceBundle);
+
         registerLabel.setTextFill(Color.color(0, 0, 0));
 
         returnIcon.setIcon(new MaterialIconView(MaterialIcon.CHEVRON_LEFT, "24"));
@@ -34,6 +51,21 @@ public class RegisterController extends BasicController {
 
     public void onReturn(MouseEvent mouseEvent) {
         stageWrapper.openLogin();
+    }
+
+    public void register(ActionEvent actionEvent) {
+        String login = loginInput.getText();
+        String password = passwordInput.getText();
+        if (!password.equals(passwordRepeatInput.getText())) {
+            showError("Password doesn't match!", "Your passwords doesn't match.");
+            return;
+        }
+        MemoryUserDatabase userDatabase = stageWrapper.getUserDatabase();
+        if (!userDatabase.register(login, password)) {
+            showError("Error!", "Unexpected error occurred, probably such account exits already.");
+        } else {
+            showInfo("Success!", "You've created account.");
+        }
     }
 
 }

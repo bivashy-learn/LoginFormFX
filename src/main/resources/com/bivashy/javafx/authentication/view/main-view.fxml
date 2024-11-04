@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="rootPane" prefHeight="512.0" prefWidth="384.0" styleClass="rootPane" stylesheets="@../css/main-view.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.bivashy.javafx.authentication.controller.MainController">
+            fx:controller="com.bivashy.javafx.authentication.controller.LoginController">
     <HBox fx:id="windowHeader" alignment="CENTER_RIGHT" layoutY="6.0" prefHeight="50.0" prefWidth="1281.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <padding>
             <Insets right="10.0"/>
@@ -31,7 +31,7 @@
                 <children>
                     <VBox prefWidth="254.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                         <children>
-                            <MFXTextField floatMode="BORDER" floatingText="Login" prefWidth="468.0">
+                            <MFXTextField fx:id="loginField" floatMode="BORDER" floatingText="Login" prefWidth="468.0">
                                 <opaqueInsets>
                                     <Insets/>
                                 </opaqueInsets>
@@ -39,7 +39,7 @@
                                     <Cursor fx:constant="DEFAULT"/>
                                 </cursor>
                             </MFXTextField>
-                            <MFXPasswordField floatMode="BORDER" floatingText="Password" layoutX="10.0" layoutY="10.0" prefWidth="468.0">
+                            <MFXPasswordField fx:id="passwordField" floatMode="BORDER" floatingText="Password" layoutX="10.0" layoutY="10.0" prefWidth="468.0">
                                 <opaqueInsets>
                                     <Insets/>
                                 </opaqueInsets>
@@ -58,7 +58,7 @@
                                     <Insets bottom="16.0" top="4.0"/>
                                 </VBox.margin>
                             </AnchorPane>
-                            <MFXButton contentDisplay="RIGHT" prefHeight="48.0" prefWidth="259.0" styleClass="outline-button" text="Login"/>
+                            <MFXButton onAction="#login" prefHeight="48.0" prefWidth="259.0" styleClass="outline-button" text="Login"/>
                         </children>
                     </VBox>
                 </children>

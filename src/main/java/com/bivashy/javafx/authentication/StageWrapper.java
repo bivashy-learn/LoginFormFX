@@ -1,7 +1,8 @@
 package com.bivashy.javafx.authentication;
 
-import com.bivashy.javafx.authentication.controller.MainController;
+import com.bivashy.javafx.authentication.controller.LoginController;
 import com.bivashy.javafx.authentication.controller.RegisterController;
+import com.bivashy.javafx.authentication.database.MemoryUserDatabase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import java.util.function.Supplier;
 
 public class StageWrapper {
 
+    private final MemoryUserDatabase userDatabase = new MemoryUserDatabase();
     private final Stage stage;
 
     public StageWrapper(Stage stage) {
@@ -21,7 +23,7 @@ public class StageWrapper {
     }
 
     public void openLogin() {
-        Parent root = loadFxml("view/main-view.fxml", () -> new MainController(this));
+        Parent root = loadFxml("view/main-view.fxml", () -> new LoginController(this));
         loadView(root, "Authentication");
     }
 
@@ -32,6 +34,10 @@ public class StageWrapper {
 
     public Stage getStage() {
         return stage;
+    }
+
+    public MemoryUserDatabase getUserDatabase() {
+        return userDatabase;
     }
 
     private void loadView(Parent root, String title) {
