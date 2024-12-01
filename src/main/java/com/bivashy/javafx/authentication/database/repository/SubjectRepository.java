@@ -27,7 +27,10 @@ public class SubjectRepository extends BaseJDBCRepository<Subject, Integer> {
     public SubjectRepository(JDBCConnectionPool connectionPool, AssignmentRepository assignmentRepository) {
         super(connectionPool, "subjects", "id");
         this.assignmentRepository = assignmentRepository;
-        executeQuery(CREATE_TABLE_QUERY);
+    }
+
+    public void createTableIfNotExists() {
+        execute(CREATE_TABLE_QUERY);
     }
 
     @Override

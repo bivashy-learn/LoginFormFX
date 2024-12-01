@@ -22,6 +22,9 @@ public class JDBCDatabase {
         this.assignmentRepository = new AssignmentRepository(connectionPool);
         this.subjectRepository = new SubjectRepository(connectionPool, assignmentRepository);
         this.studentRepository = new StudentRepository(connectionPool, userRepository, subjectRepository);
+        subjectRepository.createTableIfNotExists();
+        assignmentRepository.createTableIfNotExists();
+        studentRepository.createTableIfNotExists();
     }
 
     public JDBCConnectionPool getConnectionPool() {

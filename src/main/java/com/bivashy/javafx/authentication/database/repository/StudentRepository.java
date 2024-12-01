@@ -29,7 +29,10 @@ public class StudentRepository extends BaseJDBCRepository<Student, Long> {
         super(connectionPool, "students", "id");
         this.userRepository = userRepository;
         this.subjectRepository = subjectRepository;
-        executeQuery(CREATE_TABLE_QUERY);
+    }
+
+    public void createTableIfNotExists() {
+        execute(CREATE_TABLE_QUERY);
     }
 
     @Override

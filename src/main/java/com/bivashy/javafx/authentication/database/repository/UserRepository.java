@@ -20,7 +20,7 @@ public class UserRepository extends BaseJDBCRepository<User, Long> {
 
     public UserRepository(JDBCConnectionPool connectionPool) {
         super(connectionPool, "users", "id");
-        executeQuery(CREATE_TABLE_QUERY);
+        execute(CREATE_TABLE_QUERY);
     }
 
     @Override

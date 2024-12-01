@@ -23,7 +23,10 @@ public class AssignmentRepository extends BaseJDBCRepository<Assignment, Long> {
 
     public AssignmentRepository(JDBCConnectionPool connectionPool) {
         super(connectionPool, "assignments", "id");
-        executeQuery(CREATE_TABLE_QUERY);
+    }
+
+    public void createTableIfNotExists() {
+        execute(CREATE_TABLE_QUERY);
     }
 
     @Override

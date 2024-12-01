@@ -25,7 +25,7 @@ public class TeacherRepository extends BaseJDBCRepository<Teacher, Long> {
     public TeacherRepository(JDBCConnectionPool connectionPool, UserRepository userRepository) {
         super(connectionPool, "teachers", "id");
         this.userRepository = userRepository;
-        executeQuery(CREATE_TABLE_QUERY);
+        execute(CREATE_TABLE_QUERY);
     }
 
     @Override
