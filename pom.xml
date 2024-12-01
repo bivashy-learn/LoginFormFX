@@ -110,6 +110,13 @@
             <version>${ikonli.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.4</version>
+        </dependency>
+
+
         <!-- VirtualizedFX -->
         <dependency>
             <groupId>io.github.palexdev</groupId>
