@@ -79,7 +79,7 @@ public abstract class BaseJDBCRepository<T, ID> {
         }
     }
 
-    protected Optional<T> findOneByColumn(String columnName, Object value) {
+    public Optional<T> findOneByColumn(String columnName, Object value) {
         String query = String.format("SELECT * FROM %s WHERE %s = ?", tableName, columnName);
         try (Connection connection = createConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -96,7 +96,7 @@ public abstract class BaseJDBCRepository<T, ID> {
         }
     }
 
-    protected List<T> findAllByColumn(String columnName, Object value) {
+    public List<T> findAllByColumn(String columnName, Object value) {
         String query = String.format("SELECT * FROM %s WHERE %s = ?", tableName, columnName);
         try (Connection connection = createConnection();
                 PreparedStatement preparedStatement = connection.prepareStatement(query)) {
