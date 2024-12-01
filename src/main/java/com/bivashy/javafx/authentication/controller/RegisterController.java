@@ -1,25 +1,18 @@
 package com.bivashy.javafx.authentication.controller;
 
 import com.bivashy.javafx.authentication.StageWrapper;
-import com.bivashy.javafx.authentication.database.MemoryUserDatabase;
+import com.bivashy.javafx.authentication.database.UserDatabase;
 import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
-import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXIconWrapper;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import io.github.palexdev.materialfx.dialogs.MFXGenericDialog;
-import io.github.palexdev.materialfx.dialogs.MFXGenericDialogBuilder;
-import io.github.palexdev.materialfx.dialogs.MFXStageDialog;
-import io.github.palexdev.materialfx.enums.ScrimPriority;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 
 import java.net.URL;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class RegisterController extends BasicController {
@@ -60,7 +53,7 @@ public class RegisterController extends BasicController {
             showError("Password doesn't match!", "Your passwords doesn't match.");
             return;
         }
-        MemoryUserDatabase userDatabase = stageWrapper.getUserDatabase();
+        UserDatabase userDatabase = stageWrapper.getUserDatabase();
         if (!userDatabase.register(login, password)) {
             showError("Error!", "Unexpected error occurred, probably such account exits already.");
         } else {

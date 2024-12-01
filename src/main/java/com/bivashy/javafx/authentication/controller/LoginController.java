@@ -1,10 +1,9 @@
 package com.bivashy.javafx.authentication.controller;
 
 import com.bivashy.javafx.authentication.StageWrapper;
-import com.bivashy.javafx.authentication.database.MemoryUserDatabase;
+import com.bivashy.javafx.authentication.database.UserDatabase;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import io.github.palexdev.mfxresources.fonts.MFXFontIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.StackPane;
@@ -41,7 +40,7 @@ public class LoginController extends BasicController {
     public void login(ActionEvent actionEvent) {
         String login = loginField.getText();
         String password = passwordField.getText();
-        MemoryUserDatabase userDatabase = stageWrapper.getUserDatabase();
+        UserDatabase userDatabase = stageWrapper.getUserDatabase();
         if (!userDatabase.login(login, password)) {
             showError("Try again!", "Invalid login or password.");
         } else {
