@@ -1,7 +1,7 @@
 package com.bivashy.javafx.authentication.controller;
 
 import com.bivashy.javafx.authentication.StageWrapper;
-import com.bivashy.javafx.authentication.database.UserDatabase;
+import com.bivashy.javafx.authentication.database.UserAuthentication;
 import de.jensd.fx.glyphs.materialicons.MaterialIcon;
 import de.jensd.fx.glyphs.materialicons.MaterialIconView;
 import io.github.palexdev.materialfx.controls.MFXIconWrapper;
@@ -53,8 +53,8 @@ public class RegisterController extends BasicController {
             showError("Password doesn't match!", "Your passwords doesn't match.");
             return;
         }
-        UserDatabase userDatabase = stageWrapper.getUserDatabase();
-        if (!userDatabase.register(login, password)) {
+        UserAuthentication userAuthentication = stageWrapper.getUserAuthentication();
+        if (!userAuthentication.register(login, password)) {
             showError("Error!", "Unexpected error occurred, probably such account exits already.");
         } else {
             showInfo("Success!", "You've created account.");

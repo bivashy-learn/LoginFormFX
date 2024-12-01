@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 
-public interface UserDatabase {
+public interface UserAuthentication {
 
     boolean login(String login, String password);
 

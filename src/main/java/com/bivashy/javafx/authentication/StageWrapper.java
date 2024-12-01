@@ -2,8 +2,10 @@ package com.bivashy.javafx.authentication;
 
 import com.bivashy.javafx.authentication.controller.LoginController;
 import com.bivashy.javafx.authentication.controller.RegisterController;
-import com.bivashy.javafx.authentication.database.JDBCUserDatabase;
-import com.bivashy.javafx.authentication.database.UserDatabase;
+import com.bivashy.javafx.authentication.database.JDBCConnectionPool;
+import com.bivashy.javafx.authentication.database.JDBCDatabase;
+import com.bivashy.javafx.authentication.database.JDBCUserAuthentication;
+import com.bivashy.javafx.authentication.database.UserAuthentication;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,7 +18,8 @@ import java.util.function.Supplier;
 
 public class StageWrapper {
 
-    private final UserDatabase userDatabase = new JDBCUserDatabase("jdbc:postgresql://localhost:5433/postgres", "username", "password");
+    private final JDBCDatabase database = new JDBCDatabase(JDBCConnectionPool.of("jdbc:postgresql://localhost:5433/postgres", "username", "password"));
+    private final UserAuthentication userAuthentication = new JDBCUserAuthentication(database.getUserRepository());
     private final Stage stage;
 
     public StageWrapper(Stage stage) {
@@ -37,8 +40,12 @@ public class StageWrapper {
         return stage;
     }
 
-    public UserDatabase getUserDatabase() {
-        return userDatabase;
+    public JDBCDatabase getDatabase() {
+        return database;
+    }
+
+    public UserAuthentication getUserAuthentication() {
+        return userAuthentication;
     }
 
     private void loadView(Parent root, String title) {

@@ -1,20 +1,19 @@
 package com.bivashy.javafx.authentication.database;
 
+import com.bivashy.javafx.authentication.database.repository.UserRepository;
 import com.bivashy.javafx.authentication.model.User;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-public class MemoryUserDatabase implements UserDatabase {
+public class JDBCUserAuthentication implements UserAuthentication {
 
-    private final List<User> users = new ArrayList<>();
     private final MessageDigest hashing;
-    private int idCounter = 0;
+    private final UserRepository userRepository;
 
-    public MemoryUserDatabase() {
+    public JDBCUserAuthentication(UserRepository userRepository) {
+        this.userRepository = userRepository;
         try {
             this.hashing = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException e) {
@@ -25,24 +24,27 @@ public class MemoryUserDatabase implements UserDatabase {
     @Override
     public boolean login(String login, String password) {
         String hashedPassword = this.hash(hashing, password);
-        Optional<User> foundUser = users.stream()
-                .filter(user -> user.getLogin().equals(login))
-                .findFirst();
+        Optional<User> foundUser = findUser(login);
         return foundUser.filter(user -> hashedPassword.equals(user.getHashedPassword())).isPresent();
     }
 
     @Override
     public boolean register(String login, String password) {
         String hashedPassword = hash(hashing, password);
-        Optional<User> foundUser = users.stream()
-                .filter(user -> user.getLogin().equals(login))
-                .findFirst();
+        Optional<User> foundUser = findUser(login);
         if (foundUser.isPresent())
             return false;
-        User user = new User(idCounter++, login, hashedPassword);
-        System.out.println(user);
-        users.add(user);
+        User user = new User(0, login, hashedPassword);
+        createUser(user);
         return true;
+    }
+
+    private void createUser(User user) {
+        userRepository.save(user, UserRepository.INSERT_QUERY);
+    }
+
+    private Optional<User> findUser(String login) {
+        return userRepository.findOneByColumn("login", login);
     }
 
 }
