@@ -2,7 +2,8 @@ package com.bivashy.javafx.authentication;
 
 import com.bivashy.javafx.authentication.controller.LoginController;
 import com.bivashy.javafx.authentication.controller.RegisterController;
-import com.bivashy.javafx.authentication.database.MemoryUserDatabase;
+import com.bivashy.javafx.authentication.database.JDBCUserDatabase;
+import com.bivashy.javafx.authentication.database.UserDatabase;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +16,7 @@ import java.util.function.Supplier;
 
 public class StageWrapper {
 
-    private final MemoryUserDatabase userDatabase = new MemoryUserDatabase();
+    private final UserDatabase userDatabase = new JDBCUserDatabase("jdbc:postgresql://localhost:5433/postgres", "username", "password");
     private final Stage stage;
 
     public StageWrapper(Stage stage) {
@@ -36,7 +37,7 @@ public class StageWrapper {
         return stage;
     }
 
-    public MemoryUserDatabase getUserDatabase() {
+    public UserDatabase getUserDatabase() {
         return userDatabase;
     }
 
