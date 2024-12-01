@@ -23,6 +23,14 @@ public abstract class BaseJDBCRepository<T, ID> {
         this.idColumn = idColumn;
     }
 
+    protected void executeQuery(String query) {
+        try (Connection connection = createConnection(); Statement statement = connection.createStatement()) {
+            statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error occurred during query execution", e);
+        }
+    }
+
     protected Connection createConnection() throws SQLException {
         return connectionPool.createConnection();
     }

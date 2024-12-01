@@ -7,17 +7,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/*
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    login VARCHAR(255) NOT NULL UNIQUE,
-    hashed_password VARCHAR(255) NOT NULL
-);
- */
 public class UserRepository extends BaseJDBCRepository<User, Long> {
+
+    public static final String CREATE_TABLE_QUERY = """
+            CREATE TABLE IF NOT EXISTS users (
+                id SERIAL PRIMARY KEY,
+                login VARCHAR(255) NOT NULL UNIQUE,
+                hashed_password VARCHAR(255) NOT NULL
+            );
+            """;
+    public static final String INSERT_QUERY = "INSERT INTO users (login, hashed_password) VALUES (?, ?);";
 
     public UserRepository(JDBCConnectionPool connectionPool) {
         super(connectionPool, "users", "id");
+        executeQuery(CREATE_TABLE_QUERY);
     }
 
     @Override
